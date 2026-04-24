@@ -1,0 +1,652 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>New Era Party Rentals — East LA</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      *,
+      *::before,
+      *::after {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      :root {
+        --pink: #ff3a1a;
+        --yellow: #ffe135;
+        --blue: #00c2ff;
+        --dark: #0d0d0d;
+        --white: #ffffff;
+      }
+
+      body {
+        font-family: "DM Sans", sans-serif;
+        background: var(--yellow);
+        color: var(--dark);
+        -webkit-font-smoothing: antialiased;
+      }
+
+      /* ── NAV ── */
+      nav {
+        background: var(--dark);
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 0 2.5rem;
+        height: 58px;
+        position: sticky;
+        top: 0;
+        z-index: 100;
+      }
+      .logo {
+        font-family: "Bebas Neue", cursive;
+        font-size: 20px;
+        letter-spacing: 0.06em;
+        color: var(--white);
+      }
+      .logo em {
+        color: var(--yellow);
+        font-style: normal;
+      }
+      .nav-links {
+        display: flex;
+        gap: 1.75rem;
+        font-size: 13px;
+        font-weight: 500;
+        color: rgba(255, 255, 255, 0.45);
+      }
+      .nav-links a {
+        color: inherit;
+        text-decoration: none;
+      }
+      .nav-book {
+        background: var(--pink);
+        color: #fff;
+        border: none;
+        padding: 8px 20px;
+        border-radius: 6px;
+        font-size: 13px;
+        font-weight: 700;
+        font-family: "DM Sans", sans-serif;
+        cursor: pointer;
+        letter-spacing: 0.03em;
+        text-transform: uppercase;
+      }
+
+      /* ── HERO ── */
+      .hero {
+        background: var(--yellow);
+        padding: 3.5rem 3rem 3rem;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 2rem;
+        align-items: center;
+        min-height: 520px;
+        position: relative;
+        overflow: hidden;
+      }
+
+      /* big decorative circles */
+      .hero::before {
+        content: "";
+        position: absolute;
+        width: 420px;
+        height: 420px;
+        border-radius: 50%;
+        background: var(--pink);
+        opacity: 0.12;
+        right: -80px;
+        top: -100px;
+        pointer-events: none;
+      }
+      .hero::after {
+        content: "";
+        position: absolute;
+        width: 260px;
+        height: 260px;
+        border-radius: 50%;
+        background: var(--blue);
+        opacity: 0.15;
+        left: 40%;
+        bottom: -80px;
+        pointer-events: none;
+      }
+
+      .hero-left {
+        position: relative;
+        z-index: 2;
+      }
+
+      .location-tag {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        background: var(--dark);
+        color: var(--yellow);
+        font-size: 11px;
+        font-weight: 700;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        padding: 5px 12px;
+        border-radius: 4px;
+        margin-bottom: 1.25rem;
+      }
+
+      .hero h1 {
+        font-family: "Bebas Neue", cursive;
+        font-size: clamp(72px, 8vw, 110px);
+        line-height: 0.9;
+        color: var(--dark);
+        margin-bottom: 1.25rem;
+        letter-spacing: 0.02em;
+      }
+      .hero h1 .stroke {
+        -webkit-text-stroke: 3px var(--dark);
+        color: transparent;
+      }
+      .hero h1 .pink {
+        color: var(--pink);
+      }
+
+      .hero-sub {
+        font-size: 15px;
+        color: rgba(0, 0, 0, 0.6);
+        max-width: 380px;
+        line-height: 1.65;
+        margin-bottom: 2rem;
+      }
+
+      .cta-row {
+        display: flex;
+        gap: 10px;
+        align-items: center;
+        flex-wrap: wrap;
+      }
+      .btn-main {
+        background: var(--pink);
+        color: #fff;
+        border: none;
+        padding: 14px 30px;
+        border-radius: 6px;
+        font-size: 15px;
+        font-weight: 700;
+        font-family: "DM Sans", sans-serif;
+        cursor: pointer;
+        text-transform: uppercase;
+        letter-spacing: 0.04em;
+        transition: transform 0.12s;
+      }
+      .btn-main:hover {
+        transform: translateY(-2px);
+      }
+      .btn-outline {
+        background: transparent;
+        color: var(--dark);
+        border: 2.5px solid var(--dark);
+        padding: 12px 26px;
+        border-radius: 6px;
+        font-size: 15px;
+        font-weight: 700;
+        font-family: "DM Sans", sans-serif;
+        cursor: pointer;
+        text-transform: uppercase;
+        letter-spacing: 0.04em;
+      }
+
+      /* Right side — photo collage placeholder */
+      .hero-right {
+        position: relative;
+        z-index: 2;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: 1fr 1fr;
+        gap: 10px;
+        height: 360px;
+      }
+      .photo-block {
+        border-radius: 12px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 32px;
+        font-weight: 700;
+        color: rgba(255, 255, 255, 0.85);
+        font-family: "Bebas Neue", cursive;
+        letter-spacing: 0.04em;
+        overflow: hidden;
+        position: relative;
+      }
+      .pb1 {
+        background: var(--pink);
+        grid-row: 1 / 3;
+        border-radius: 16px;
+        font-size: 44px;
+      }
+      .pb2 {
+        background: var(--blue);
+      }
+      .pb3 {
+        background: var(--dark);
+      }
+      .photo-label {
+        font-size: 13px;
+        letter-spacing: 0.08em;
+        text-align: center;
+        padding: 0.5rem;
+      }
+
+      /* ── TICKER ── */
+      .ticker {
+        background: var(--pink);
+        color: #fff;
+        padding: 11px 0;
+        overflow: hidden;
+        white-space: nowrap;
+      }
+      .ticker-inner {
+        display: inline-block;
+        animation: ticker 18s linear infinite;
+        font-family: "Bebas Neue", cursive;
+        font-size: 18px;
+        letter-spacing: 0.1em;
+      }
+      @keyframes ticker {
+        0% {
+          transform: translateX(0);
+        }
+        100% {
+          transform: translateX(-50%);
+        }
+      }
+      .tick-sep {
+        color: var(--yellow);
+        margin: 0 1rem;
+      }
+
+      /* ── CATEGORIES ── */
+      .cats-section {
+        background: #fff;
+        padding: 4rem 3rem;
+      }
+      .sec-ey {
+        font-size: 11px;
+        text-transform: uppercase;
+        letter-spacing: 0.12em;
+        color: #999;
+        margin-bottom: 4px;
+      }
+      .sec-h2 {
+        font-family: "Bebas Neue", cursive;
+        font-size: 48px;
+        color: var(--dark);
+        margin-bottom: 2.5rem;
+        letter-spacing: 0.03em;
+      }
+      .cat-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+        gap: 14px;
+        max-width: 820px;
+      }
+      .cat-card {
+        border: 2.5px solid var(--dark);
+        border-radius: 12px;
+        padding: 1.5rem 1rem;
+        text-align: center;
+        cursor: pointer;
+        transition:
+          background 0.15s,
+          transform 0.15s;
+        background: #fff;
+      }
+      .cat-card:hover {
+        background: var(--yellow);
+        transform: translateY(-3px);
+      }
+      .cat-icon {
+        font-size: 30px;
+        display: block;
+        margin-bottom: 8px;
+      }
+      .cat-name {
+        font-size: 13px;
+        font-weight: 700;
+        color: var(--dark);
+      }
+      .cat-sub {
+        font-size: 11px;
+        color: #999;
+        margin-top: 3px;
+      }
+
+      /* ── AVAILABILITY ── */
+      .avail {
+        background: var(--dark);
+        padding: 4rem 3rem;
+      }
+      .avail-inner {
+        max-width: 700px;
+      }
+      .avail h2 {
+        font-family: "Bebas Neue", cursive;
+        font-size: 56px;
+        color: var(--yellow);
+        line-height: 0.95;
+        margin-bottom: 0.75rem;
+        letter-spacing: 0.02em;
+      }
+      .avail p {
+        font-size: 14px;
+        color: rgba(255, 255, 255, 0.5);
+        margin-bottom: 2rem;
+      }
+      .avail-row {
+        display: flex;
+        gap: 10px;
+        flex-wrap: wrap;
+      }
+      .avail-input {
+        background: rgba(255, 255, 255, 0.07);
+        border: 2px solid rgba(255, 255, 255, 0.15);
+        color: #fff;
+        padding: 13px 18px;
+        border-radius: 6px;
+        font-size: 14px;
+        font-family: "DM Sans", sans-serif;
+        outline: none;
+        flex: 1;
+        min-width: 160px;
+      }
+      .avail-input::placeholder {
+        color: rgba(255, 255, 255, 0.35);
+      }
+      .avail-input:focus {
+        border-color: var(--yellow);
+      }
+      .avail-btn {
+        background: var(--yellow);
+        color: var(--dark);
+        border: none;
+        padding: 13px 28px;
+        border-radius: 6px;
+        font-size: 14px;
+        font-weight: 700;
+        cursor: pointer;
+        font-family: "DM Sans", sans-serif;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+        white-space: nowrap;
+      }
+
+      /* ── WHY ── */
+      .why {
+        background: var(--yellow);
+        padding: 4rem 3rem;
+      }
+      .why-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+        gap: 1.75rem;
+        max-width: 820px;
+        margin-top: 2.5rem;
+      }
+      .why-card {
+        background: #fff;
+        border: 2.5px solid var(--dark);
+        border-radius: 12px;
+        padding: 1.5rem;
+      }
+      .why-card .wi {
+        font-size: 28px;
+        margin-bottom: 10px;
+        display: block;
+      }
+      .why-card h3 {
+        font-size: 15px;
+        font-weight: 700;
+        margin-bottom: 6px;
+      }
+      .why-card p {
+        font-size: 13px;
+        color: #555;
+        line-height: 1.55;
+      }
+
+      /* ── FOOTER ── */
+      footer {
+        background: var(--dark);
+        padding: 2rem 3rem;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 1rem;
+      }
+      .f-logo {
+        font-family: "Bebas Neue", cursive;
+        font-size: 18px;
+        color: rgba(255, 255, 255, 0.4);
+        letter-spacing: 0.05em;
+      }
+      .f-logo em {
+        color: var(--yellow);
+        font-style: normal;
+      }
+      .f-contact {
+        font-size: 12px;
+        color: rgba(255, 255, 255, 0.25);
+      }
+
+      .pax-bar {
+        background: var(--pink);
+        padding: 0.75rem 3rem;
+        text-align: center;
+        font-size: 12px;
+        color: rgba(255, 255, 255, 0.75);
+        font-weight: 500;
+      }
+      .pax-bar a {
+        color: #fff;
+        font-weight: 700;
+        text-decoration: none;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- NAV -->
+    <nav>
+      <div class="logo">New <em>Era</em> Party Rentals</div>
+      <div class="nav-links">
+        <a href="#">Rentals</a>
+        <a href="#">Gallery</a>
+        <a href="#">Delivery</a>
+        <a href="#">Contact</a>
+      </div>
+      <button class="nav-book">Book Now</button>
+    </nav>
+
+    <!-- HERO -->
+    <section class="hero">
+      <div class="hero-left">
+        <div class="location-tag">📍 East LA &amp; All of SoCal</div>
+        <h1>
+          WE<br />
+          BRING<br />
+          THE <span class="pink">PARTY.</span>
+        </h1>
+        <p class="hero-sub">
+          Tents, tables, inflatables, margarita machines &amp; more — delivered
+          and set up so you don't have to stress. Book online in 2 minutes.
+        </p>
+        <div class="cta-row">
+          <button class="btn-main">Browse Rentals</button>
+          <button class="btn-outline">Call Us</button>
+        </div>
+      </div>
+
+      <div class="hero-right">
+        <div class="photo-block pb1">
+          ⛺
+          <div class="photo-label">TENTS &amp;<br />CANOPIES</div>
+        </div>
+        <div class="photo-block pb2">
+          🎉
+          <div class="photo-label">INFLATABLES</div>
+        </div>
+        <div class="photo-block pb3" style="color: var(--yellow)">
+          🍹
+          <div class="photo-label">MARGARITA<br />MACHINES</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- TICKER -->
+    <div class="ticker">
+      <div class="ticker-inner">
+        TENTS <span class="tick-sep">✦</span> TABLES &amp; CHAIRS
+        <span class="tick-sep">✦</span> MARGARITA MACHINES
+        <span class="tick-sep">✦</span> INFLATABLES
+        <span class="tick-sep">✦</span> BALLOON ARCHES
+        <span class="tick-sep">✦</span> LINENS &amp; DECOR
+        <span class="tick-sep">✦</span> DELIVERY &amp; SETUP
+        <span class="tick-sep">✦</span> LOS ANGELES
+        <span class="tick-sep">✦</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; TENTS
+        <span class="tick-sep">✦</span> TABLES &amp; CHAIRS
+        <span class="tick-sep">✦</span> MARGARITA MACHINES
+        <span class="tick-sep">✦</span> INFLATABLES
+        <span class="tick-sep">✦</span> BALLOON ARCHES
+        <span class="tick-sep">✦</span> LINENS &amp; DECOR
+        <span class="tick-sep">✦</span> DELIVERY &amp; SETUP
+        <span class="tick-sep">✦</span> LOS ANGELES
+        <span class="tick-sep">✦</span>
+      </div>
+    </div>
+
+    <!-- CATEGORIES -->
+    <section class="cats-section">
+      <p class="sec-ey">Everything you need</p>
+      <h2 class="sec-h2">Shop the Catalog</h2>
+      <div class="cat-grid">
+        <div class="cat-card">
+          <span class="cat-icon">⛺</span>
+          <div class="cat-name">Tents &amp; Canopies</div>
+          <div class="cat-sub">12 styles</div>
+        </div>
+        <div class="cat-card">
+          <span class="cat-icon">🪑</span>
+          <div class="cat-name">Tables &amp; Chairs</div>
+          <div class="cat-sub">8 styles</div>
+        </div>
+        <div class="cat-card">
+          <span class="cat-icon">🍹</span>
+          <div class="cat-name">Margarita Machines</div>
+          <div class="cat-sub">3 sizes</div>
+        </div>
+        <div class="cat-card">
+          <span class="cat-icon">🎪</span>
+          <div class="cat-name">Inflatables</div>
+          <div class="cat-sub">Bounce houses + more</div>
+        </div>
+        <div class="cat-card">
+          <span class="cat-icon">🎈</span>
+          <div class="cat-name">Balloon Arches</div>
+          <div class="cat-sub">Custom colors</div>
+        </div>
+        <div class="cat-card">
+          <span class="cat-icon">✨</span>
+          <div class="cat-name">Lighting &amp; Decor</div>
+          <div class="cat-sub">30+ items</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- AVAILABILITY -->
+    <section class="avail">
+      <div class="avail-inner">
+        <h2>IS YOUR<br />DATE OPEN?</h2>
+        <p>
+          Check real-time availability and lock in your equipment before someone
+          else does.
+        </p>
+        <div class="avail-row">
+          <input class="avail-input" type="text" placeholder="Event date" />
+          <input class="avail-input" type="text" placeholder="City or ZIP" />
+          <button class="avail-btn">Check Now →</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- WHY -->
+    <section class="why">
+      <p class="sec-ey">Why New Era</p>
+      <h2
+        class="sec-h2"
+        style="
+          font-family: &quot;Bebas Neue&quot;, cursive;
+          font-size: 48px;
+          letter-spacing: 0.03em;
+        "
+      >
+        We show up. We set up. You party.
+      </h2>
+      <div class="why-grid">
+        <div class="why-card">
+          <span class="wi">🚚</span>
+          <h3>Delivery &amp; Setup Included</h3>
+          <p>
+            We haul it, we set it up, we break it down. All you do is celebrate.
+          </p>
+        </div>
+        <div class="why-card">
+          <span class="wi">📅</span>
+          <h3>Book Online 24/7</h3>
+          <p>
+            Check what's available and pay a deposit to hold your date — no
+            back-and-forth calls.
+          </p>
+        </div>
+        <div class="why-card">
+          <span class="wi">📍</span>
+          <h3>All of SoCal</h3>
+          <p>
+            East LA home base but we roll out to Orange County, the Valley, IE —
+            wherever the party is.
+          </p>
+        </div>
+        <div class="why-card">
+          <span class="wi">⭐</span>
+          <h3>Real Reviews</h3>
+          <p>
+            Hundreds of quinceañeras, birthdays, weddings, and backyard bashes.
+            We know what we're doing.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+      <div class="f-logo">New <em>Era</em> Party Rentals</div>
+      <div class="f-contact">(323) 480-0660 · NEWERAPARTYRENTALS@yahoo.com</div>
+      <div style="font-size: 11px; color: rgba(255, 255, 255, 0.2)">
+        Site by
+        <a
+          href="https://paxweb.dev"
+          style="color: rgba(255, 225, 53, 0.5); text-decoration: none"
+          >paxweb.dev</a
+        >
+      </div>
+    </footer>
+
+    <div class="pax-bar">
+      Design preview by <a href="https://paxweb.dev">Pax Web Dev</a> · Custom
+      Next.js sites · $250/month, no upfront fee
+    </div>
+  </body>
+</html>
